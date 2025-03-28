@@ -647,7 +647,7 @@ class AssociativeMemoryCell(torch.nn.Module):
             else:
                 generated_ids = next_token_id
             next_input = next_token_id
-            
+
             sw_attention_mask = torch.cat([sw_attention_mask, torch.ones_like(next_token_id).to(sw_attention_mask.device)], dim=-1)[..., -window_size-1-self.use_sink:]
             with torch.no_grad():
                 outputs = self.model(
